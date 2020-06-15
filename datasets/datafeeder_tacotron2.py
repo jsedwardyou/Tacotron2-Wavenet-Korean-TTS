@@ -164,7 +164,7 @@ class DataFeederTacotron2(threading.Thread):
 
         if self.data_type == 'test':
             examples = []
-            print(data_dir)
+            print(self.data_dir)
             while True:
                 print("what")
                 for data_dir in self.data_dirs:
