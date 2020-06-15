@@ -166,8 +166,9 @@ class DataFeederTacotron2(threading.Thread):
             examples = []
             while True:
                 for data_dir in self.data_dirs:
+                    
                     examples.append(self._get_next_example(data_dir))
-                    #print(data_dir, text.sequence_to_text(examples[-1][0], False, True))
+                    print(data_dir, text.sequence_to_text(examples[-1][0], False, True))
                     if len(examples) >= self.batch_size:
                         break
                 if len(examples) >= self.batch_size:
