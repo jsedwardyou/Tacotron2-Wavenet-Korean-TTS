@@ -31,6 +31,8 @@ def get_path_dict(data_dirs, hparams, config,data_type, n_test=None,rng=np.rando
     path_dict = {}
     for data_dir in data_dirs:  # ['datasets/moon\\data']
         paths = glob("{}/*.npz".format(data_dir)) # ['datasets/moon\\data\\001.0000.npz', 'datasets/moon\\data\\001.0001.npz', 'datasets/moon\\data\\001.0002.npz', ...]
+        
+        print("TOTAL NPZ FILES: {}".format(len(paths)))
 
         if data_type == 'train':
             rng.shuffle(paths)  # ['datasets/moon\\data\\012.0287.npz', 'datasets/moon\\data\\004.0215.npz', 'datasets/moon\\data\\003.0149.npz', ...]
