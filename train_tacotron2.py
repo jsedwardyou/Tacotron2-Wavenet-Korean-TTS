@@ -115,6 +115,7 @@ def train(log_dir, config):
     log(hparams_debug_string())
 
     # Set up DataFeeder:
+    print("### SET UP DATA FEEDER ###")
     coord = tf.train.Coordinator()
     with tf.variable_scope('datafeeder') as scope:
         # DataFeeder의 6개 placeholder: train_feeder.inputs, train_feeder.input_lengths, train_feeder.loss_coeff, train_feeder.mel_targets, train_feeder.linear_targets, train_feeder.speaker_id
@@ -122,7 +123,7 @@ def train(log_dir, config):
         test_feeder = DataFeederTacotron2(coord, data_dirs, hparams, config, 8, data_type='test', batch_size=config.num_test)
 
     # Set up model:
-
+    print("### SET UP MODEL ###")
     global_step = tf.Variable(0, name='global_step', trainable=False)
 
     with tf.variable_scope('model') as scope:
@@ -143,7 +144,7 @@ def train(log_dir, config):
         
         test_model.add_loss()
 
-
+    print("### BOOK KEEPING ###")
     # Bookkeeping:
     step = 0
     time_window = ValueWindow(100)
