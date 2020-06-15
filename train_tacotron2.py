@@ -245,13 +245,13 @@ def main():
     #parser.add_argument('--data_paths', default='D:\\hccho\\Tacotron-Wavenet-Vocoder-hccho\\data\\small1,D:\\hccho\\Tacotron-Wavenet-Vocoder-hccho\\data\\small2')
     
     
-    #parser.add_argument('--load_path', default=None)   # 아래의 'initialize_path'보다 우선 적용
-    parser.add_argument('--load_path', default='logdir-tacotron2/moon+son_2019-03-01_10-35-44')
+    parser.add_argument('--load_path', default=None)   # 아래의 'initialize_path'보다 우선 적용
+    #parser.add_argument('--load_path', default='logdir-tacotron2/moon+son_2019-03-01_10-35-44')
     
     
     parser.add_argument('--initialize_path', default=None)   # ckpt로 부터 model을 restore하지만, global step은 0에서 시작
 
-    parser.add_argument('--batch_size', type=int, default=32)
+    parser.add_argument('--batch_size', type=int, default=8)
     parser.add_argument('--num_test_per_speaker', type=int, default=2)
     parser.add_argument('--random_seed', type=int, default=123)
     parser.add_argument('--summary_interval', type=int, default=100)
