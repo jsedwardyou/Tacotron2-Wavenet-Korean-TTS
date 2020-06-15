@@ -153,6 +153,7 @@ def train(log_dir, config):
     sess_config = tf.ConfigProto(log_device_placement=False,allow_soft_placement=True)
     sess_config.gpu_options.allow_growth=True
 
+    print("### START TRAINING ###")
     # Train!
     #with tf.Session(config=sess_config) as sess:
     with tf.Session() as sess:
@@ -181,10 +182,11 @@ def train(log_dir, config):
                 log('Starting new training run at commit: %s' % commit, slack=True)
 
             start_step = sess.run(global_step)
-
+            print("### FEEDER ###")
             train_feeder.start_in_session(sess, start_step)
             test_feeder.start_in_session(sess, start_step)
 
+            print("### WHILE LOOP ###")
             while not coord.should_stop():
                 start_time = time.time()
                 step, loss, opt = sess.run([global_step, model.loss_without_coeff, model.optimize])
